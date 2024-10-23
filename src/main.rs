@@ -1,5 +1,11 @@
 use std::io::stdin;
 
+use closures::test_closures;
+use match_expressions::match_pattern;
+
+pub mod closures;
+pub mod match_expressions;
+
 mod utils;
 
 #[allow(dead_code)]
@@ -27,6 +33,7 @@ fn data_types() {
     println!("{:?}", slices);
 }
 
+#[allow(dead_code)]
 fn conditionals() {
     let age_to_drive: u8 = 16u8;
 
@@ -37,15 +44,55 @@ fn conditionals() {
     let age: u8 = my_input.trim().parse::<u8>().unwrap();
 
     if age >= age_to_drive {
-        println!("You can drive");  
+        println!("You can drive");
     } else {
         println!("You cannot drive");
     }
 }
 
-fn main() {
-    let user_name: String = utils::get_full_name("kai", "zeno");
-    println!("My Name is {0}", user_name);
+#[allow(dead_code)]
+fn test_while() {
+    let age_to_drive: u8 = 20u8;
+    let mut current_age: u8 = 15u8;
 
-    conditionals();
+    while current_age < age_to_drive {
+        println!("Hello");
+        current_age += 1;
+    }
+}
+
+#[allow(dead_code)]
+fn test_loop() {
+    let mut x: i32 = 0;
+    loop {
+        println!("hello from rust");
+        if x > 5 {
+            break;
+        }
+        x += 1;
+    }
+}
+
+fn test_for() {
+    let ages: [i32; 5] = [8, 18, 20, 30, 40];
+    let age_to_drive: i32 = 16;
+
+    for x in ages {
+        if x > age_to_drive {
+            println!("current age is {0}", x);
+        }
+    }
+}
+
+fn main() {
+    // let user_name: String = utils::get_full_name("kai", "zeno");
+    // println!("My Name is {0}", user_name);
+    // conditionals();
+    // test_while();
+    // test_loop();
+    // test_for();
+
+    // test_closures();
+
+    match_pattern();
 }
